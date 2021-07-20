@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+  <script src="https://mcapi.us/scripts/minecraft.js"></script><script>
+      MinecraftAPI.getServerStatus('nightmc.minesr.com', function (err, status) {
+        if (err) {
+          return document.querySelector('.server-status').innerHTML = 'Error loading status';
+        }
+        document.querySelector('.server-online').innerHTML = status.online ? 'en ligne' : 'hors ligne';
+        document.querySelector('.server-connected').innerHTML = status.players.now + " / " + status.players.max;
+        document.querySelector('.server-icon').innerHTML = "<img src='" + status.favicon + "'></img>"
+      });
+    </script>
+  <p>État du serveur: <span class="server-online">Connecting...</span></p>
+  <p>Joueurs en lignes: <span class="server-connected">0 / 0</span></p>
+  <div class="server-icon"></div>
+</body>
+</html>
+<!-- https://mcapi.us/ -->
